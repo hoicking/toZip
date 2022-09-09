@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React, {useRef} from 'react'
+import Left from './pages/left'
+import Right from './pages/right'
 import './App.css';
 
 function App() {
+
+  const rightRef = useRef()
+
+  const genImage = () => {
+    console.log('======>', rightRef)
+    rightRef.current.toImage()
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div id='left' className='left'>
+        <Left />
+      </div>
+
+      <button onClick={genImage}>生成</button>
+
+      <div id='right' className='right'>
+        <Right cref={rightRef}/>
+      </div>
+
     </div>
   );
 }
