@@ -195,4 +195,4 @@ function createWriter (underlyingSource) {
   })
 }
 
-export const ZIP = createWriter
+window.ZIP = createWriter

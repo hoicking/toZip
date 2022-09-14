@@ -5,7 +5,9 @@ import streamSaver from 'streamsaver'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
 
-import {ZIP} from './zip'
+import './zip-stream'
+
+// streamSaver.mitm = 'http://localhost:3000/mitm.html'
 
 
 function Index ({cref}) {
@@ -34,7 +36,7 @@ function Index ({cref}) {
     console.log('-----> read blob ok')
 
 
-    const readableZipStream = new ZIP({
+    const readableZipStream = new window.ZIP({
       start (ctrl) {
 
         // const blob = new Blob(['support blobs too'])
@@ -59,11 +61,12 @@ function Index ({cref}) {
 
           return new Promise((resolve, reject) => {
             canvas.toBlob(function (blob) {
-              console.log(`------>${index}`, blob)
-              ctrl.enqueue({name:`blob-example${index}.png`, stream: () => blob.stream() })
-              resolve(blob.stream())
+              resolve(blob)
               // resolve(blob)
             })
+          }).then((value)=> {
+            console.log(`------>${index}`, value)
+            ctrl.enqueue({name:`blob-example${index}.png`, stream: () => value.stream() })
           })
         }
         // Gets executed everytime zip.js asks for more data
@@ -71,7 +74,7 @@ function Index ({cref}) {
         // const res = await fetch(url)
         // const stream = () => res.body
         // const name = 'streamsaver-zip-example/cat.mp4'
-        const list = []
+        // const list = []
         // data.forEach((item, index) => {
         //   ctx.putImageData(imageData, 0, 0)
         //   list.push(getStream(item, ctx, canvas, index))
@@ -95,12 +98,21 @@ function Index ({cref}) {
       }
     })
 
-    const writer = fileStream.getWriter()
-    const reader = readableZipStream.getReader()
-    const pump = () => reader.read()
-      .then(res => res.done ? writer.close() : writer.write(res.value).then(pump))
+    console.log('=====>', window.WritableStream, readableZipStream.pipeTo)
+    if (window.WritableStream && readableZipStream.pipeTo) {
+      return readableZipStream.pipeTo(fileStream)
+      .then(() => {
+        console.log('下载成功')
+       })
+      .catch(()=>console.log('网络不佳,下载失败'))
+    }
 
-    pump()
+    // const writer = fileStream.getWriter()
+    // const reader = readableZipStream.getReader()
+    // const pump = () => reader.read()
+    //   .then(res => res.done ? writer.close() : writer.write(res.value).then(pump))
+
+    // pump()
   }
 
   // const getStream = async(textInfo, ctx, canvas) => {
@@ -127,7 +139,7 @@ function Index ({cref}) {
 
   const getData = async() => {
     let list = []
-    for (let index = 0; index < 1000; index++) {
+    for (let index = 0; index < 200; index++) {
       list.push([{text: `王尼玛${index}`, x: 120, y: 360, color: 'orange', fontsize: '24'},
       {text: '12341231', x: 190, y: 640, color: 'orange', fontsize: '24'},
       {text: '20220718', x: 390, y: 640, color: 'orange', fontsize: '24'}])
