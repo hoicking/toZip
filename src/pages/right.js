@@ -80,9 +80,12 @@ function Index ({cref}) {
         //   list.push(getStream(item, ctx, canvas, index))
         // })
         // const res =  await Promise.all(list)
+        console.log('---->', Date())
         for (let index = 0; index < data.length; index++) {
           await getStream(data[index], ctx, canvas, index)
         }
+
+        console.log('---->', Date())
 
         // const zip = new JSZip()
         // res.forEach((blob, index)=> {
