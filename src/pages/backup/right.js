@@ -5,7 +5,7 @@ import streamSaver from 'streamsaver'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
 
-import './zip-stream'
+import '../../util/zip-stream'
 
 // streamSaver.mitm = 'http://localhost:3000/mitm.html'
 
@@ -16,16 +16,19 @@ function Index ({cref}) {
   }, [])
 
   const toImage = async () => {
+    debugger
     const fileStream = streamSaver.createWriteStream('archive.zip')
 
     const data = await getData()
 
     const el = document.getElementById('left')
+    debugger
     const canvas = await html2canvas(el, {
       useCORS: true,
       dpi: 300,
-      scale: 5,
+      scale: 8,
     })
+    debugger
 
     // const str = 'https://tpic.yxt.com/works/16220/12535/7c0c90cb-ae97-45dc-91ee-290c5e4583f8/79c36d13b9ba4e00a5e3f00a2f7fedba/c9f6088a08a00001e03b1402184616b0.jpg?x-oss-process=style/mini'
 

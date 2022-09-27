@@ -1,6 +1,6 @@
 import React, {useRef} from 'react'
-import Left from './pages/left'
-import Right from './pages/right'
+import Left from './left'
+import Right from './right'
 import './App.css';
 
 function App() {
