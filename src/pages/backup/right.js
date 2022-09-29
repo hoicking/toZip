@@ -16,32 +16,26 @@ function Index ({cref}) {
   }, [])
 
   const toImage = async () => {
-    debugger
     const fileStream = streamSaver.createWriteStream('archive.zip')
 
     const data = await getData()
 
     const el = document.getElementById('left')
-    debugger
     const canvas = await html2canvas(el, {
       useCORS: true,
       dpi: 300,
-      scale: 8,
+      scale: 3,
     })
-    debugger
 
     // const str = 'https://tpic.yxt.com/works/16220/12535/7c0c90cb-ae97-45dc-91ee-290c5e4583f8/79c36d13b9ba4e00a5e3f00a2f7fedba/c9f6088a08a00001e03b1402184616b0.jpg?x-oss-process=style/mini'
 
     const ctx = canvas.getContext('2d')
-
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
 
     console.log('-----> read blob ok')
 
 
     const readableZipStream = new window.ZIP({
       start (ctrl) {
-
         // const blob = new Blob(['support blobs too'])
 
         // const file3 = {
@@ -145,7 +139,7 @@ function Index ({cref}) {
 
   const getData = async() => {
     let list = []
-    for (let index = 0; index < 200; index++) {
+    for (let index = 0; index < 20; index++) {
       list.push([{text: `王尼玛${index}`, x: 120, y: 360, color: 'orange', fontsize: '24'},
       {text: '12341231', x: 190, y: 640, color: 'orange', fontsize: '24'},
       {text: '20220718', x: 390, y: 640, color: 'orange', fontsize: '24'}])

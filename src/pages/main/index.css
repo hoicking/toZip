@@ -4,3 +4,42 @@
 body {
   padding: 20px
 }
+
+.image {
+  width: 300px;
+  cursor: pointer;
+}
+
+.text {
+  margin-bottom: 20px;
+}
+
+.ant-drawer-body{
+  text-align: center;
+}
+
+.preview {
+  height: 800px;
+  width: fit-content;
+  min-width: 200px;
+  border: 1px solid #eeeeee;
+}
+
+.preview-image{
+  height: 100%;
+}
+
+#cert {
+  width: fit-content;
+}
+.cert-preview{
+  height: 800px;
+}
+
+.hide-canvas {
+  position: absolute;
+
+  left: -3000px
+
+
+}
