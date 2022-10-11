@@ -31,9 +31,6 @@ function Index ({cref}) {
 
     const ctx = canvas.getContext('2d')
 
-    console.log('-----> read blob ok')
-
-
     const readableZipStream = new window.ZIP({
       start (ctrl) {
         // const blob = new Blob(['support blobs too'])
@@ -47,7 +44,6 @@ function Index ({cref}) {
         // ctrl.close()
       },
       async pull (ctrl) {
-        console.log('----->pull')
         const getStream = async(textInfo, ctx, canvas, index) => {
           // ctx.clearRect(0, 0, canvas.width, canvas.height)
           textInfo.forEach(item => {

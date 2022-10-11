@@ -22,16 +22,29 @@ function Index () {
       width: 1754,
       height: 2480,
       text: [
-        {text: 'testname',x: '328.983', y: '1093.42', color: 'orange', fontsize: 58},
-        {text: '090182',x: '569.298', y: '2003.06', color: 'orange', fontsize: 58},
-        {text: '2012-12-21',x: '1220.82', y: '2006.21', color: 'orange', fontsize: 58},
+        {text: 'testname',x: '328.983', y: '1151.42', color: 'orange', fontsize: 58},
+        {text: '090182',x: '569.298', y: '2061.06', color: 'orange', fontsize: 58},
+        {text: '2012-12-21',x: '1220.82', y: '2061.21', color: 'orange', fontsize: 58},
       ]
     },
     {
-      path: '/images/image-2.png'
+      path: '/images/image-2.png',
+      width: 2480,
+      height: 1754,
+      text: [
+        {text: 'testname',x: '655.98', y: '776.86', color: 'orange', fontsize: 60},
+        {text: '090182',x: '876.296', y: '1430.562', color: 'orange', fontsize: 48},
+        {text: '2012-12-21',x: '1557.84', y: '1436.562', color: 'orange', fontsize: 48},
+      ]
     },
     {
-      path: '/images/image-3.png'
+      path: '/images/image-3.png',
+      width: 2480,
+      height: 1754,
+      text: [
+        {text: '090182',x: '1749.29', y: '1475.615', color: 'orange', fontsize: 58},
+        {text: '2012-12-21',x: '506.32', y: '1475.615', color: 'orange', fontsize: 58}
+      ]
     }
   ])
 
